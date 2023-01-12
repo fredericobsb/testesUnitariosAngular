@@ -1,0 +1,80 @@
+ERROS MAIS COMUNS NOS TESTES:
+
+-  no provider for NgControl found in NodeInjector - Para usar formularios, tem que importar nos testes o FormsModule.
+
+- No provider for HttpClient - Para usar requisicoes http, temque importar HttpClientTestingModule.
+
+- Para usar formularios, tem que colocar provider ReactiveFormsModule ( erro 'no provider for formbuilder).
+
+-No provider for MatDialog - Tem que colocar o {provider MAT_DIALOG_DATA, useValue: {}} 
+      e imports: MatDialogModule (@angular/material/dialog).
+
+- Rodando um unico teste: "fdescribe" no teste desejado, e rode o comando: ng test
+
+- Focando num unico it: basta pôr o "f" no it.
+
+-Rodar um unico teste: ng test --include/**nome-do-teste.spec.ts
+
+- COMO DEBUGAR UM TESTE: 
+     1) rode o teste
+     2) vá no carma (tela html), e clique em debug.
+     3) Clique direito do mouse: inspecionar
+     4) vá na aba sources
+     5) control + P: pesquise o nome do teste desejado.
+     6) coloque o break point no local desejado
+     7) atualize a pagina.
+
+- Como fazer um debbug manual: - coloque a palavra "debugger" em qq lugar do codigo, e um
+     break point aparecerá lá. 
+
+- Contexto de debugger do jasmine: na aba console, há 2 contextos: top e context. se digitar "jasmine"
+    no contexto top, dá erro. mas se trocar o contexto para "context", e digitar "jasmine", aparece
+    várias opcoes do jasmine. 
+
+- Mockando um serviço:
+     * Em my-service.service.ts, temos o metodo getUsers(). Queremos testa-lo sem invocar a API verdadeira. Temos que mockar o metodo getUsers.
+     Passos:
+       1) Veja exemplo completo de mock de classe e metodo em:
+          - veja classe my-service.service.spec.ts
+
+- Mockando com stub:
+     - veja exemplo em stub.component.spec.ts
+
+- Espionando metodos de componentes com spyOn:
+     - veja exemplo em spyon.component.spec.ts -> exemplo de mockar metodo q clica em botao.
+
+- Espionando metodos de servicos com spyOn:
+     - Veja spyon-service.service.spec.ts
+
+- Criando objetos com createSpy:
+     - Serve para criar metodos que nao existem, para criar matchs, para verificar se foi chamado, 
+     setar parametros, verificar quantas x foi chamado.
+     - veja spyon-service.service.spec.ts
+
+- Testando chamadas http: get por ID, get, erro, PUT, DELETE, se headers foram passados:
+     - veja http.service.spec.ts
+
+- Testando requisicao com headers
+     - veja http.service.spec.ts
+
+- Testando subscribe:
+     - Veja asynchronous-component.component.ts - it('Deve fazer request para obter lista de usuarios'...
+
+- Testando promisses: - ** PRECISA USAR ASYNC, senão dá undefined **
+     - Veja asyncrhonous-component.component.spec.ts -  it('Deve fazer chamada para obter lista 
+             de usuarios com promise'...
+
+- Usando a função done:
+      - Veja asyncrhonous-component.component.spec.ts - it('Deve logar usuario', (done: DoneFn) 
+
+- Usando Async e WhenStable:
+      - Veja asyncrhonous-component.component.spec.ts - it('Deve logar usuario com whenStable', async()
+
+- FakeAsync e Tick:
+      - Veja  asyncrhonous-component.component.spec.ts - it('Deve setar nome', fakeAsync(() => {
+
+- Testando pipes: 
+      - Veja http.pipe.spec.ts
+
+- Testando Guarda de rota:
+     - Veja guard.guard.spec.ts
